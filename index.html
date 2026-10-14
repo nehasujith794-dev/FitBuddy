@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}FitBuddy | Generate Plan{% endblock %}
+{% block content %}
+<section class="hero"><p class="eyebrow">AI FITNESS PLAN GENERATOR</p>
+<h1>Your personalized 7-day fitness plan.</h1>
+<p class="lead">Enter your profile and FitBuddy uses Gemini to generate a structured workout plan and a practical nutrition/recovery tip.</p></section>
+<section class="card"><h2>Fitness profile</h2>
+<form action="/generate-workout" method="post">
+<div class="grid">
+<label>Name<input name="username" required maxlength="120"></label>
+<label>User ID<input name="user_id" required maxlength="100"></label>
+<label>Age<input name="age" type="number" min="13" max="100" required></label>
+<label>Weight (kg)<input name="weight" type="number" min="20" max="500" step="0.1" required></label>
+<label>Fitness goal<select name="goal" required>
+<option value="weight loss">Weight loss</option><option value="muscle gain">Muscle gain</option>
+<option value="general wellness">General wellness</option><option value="flexibility">Flexibility</option>
+<option value="endurance">Endurance</option></select></label>
+<label>Workout intensity<select name="intensity" required>
+<option value="low">Low</option><option value="medium" selected>Medium</option><option value="high">High</option>
+</select></label>
+</div><button class="btn" type="submit">Generate 7-Day Plan</button></form>
+<p class="note">Use realistic goals. Stop activities that cause pain. Younger users should involve a parent/guardian or qualified professional for individualized fitness guidance.</p>
+</section>
+{% endblock %}
